@@ -9,8 +9,10 @@
 </head>
 <body>
 
+    <div class="landing-bg" id="landingBg"></div>
+
     <section class="landing" id="landingSection">
-        <div class="landing-text" id="landingText">
+        <div class="landing-text">
             <p class="sub-text">Chirala to Liverpool</p>
             <h1 class="main-title">Jagadeesh M</h1>
             <div class="status-bar">
@@ -24,64 +26,72 @@
         <div class="reveal-item">
             <h2 class="section-title">Academic Journey</h2>
             <div class="grid-container education-grid">
-                <div class="grid-item" onclick="openModal('10', 'Vignan Bharati High School', '2016', 'Student of the Year and Best Science Project. NCC Cadet and District-level athlete.')">
-                    <div class="img-container"><img src="10.jpg"></div>
-                    <div class="item-info">
-                        <span class="tag">Schooling</span>
-                        <h3>Vignan Bharati</h3>
-                    </div>
-                </div>
-                <div class="grid-item" onclick="openModal('inter', 'Narayana Junior College', '2016 - 2018', 'Focusing on MPC, this was the ideation phase of my life where I prototyped my first business ideas.')">
-                    <div class="img-container"><img src="inter.jpg"></div>
-                    <div class="item-info">
-                        <span class="tag">Intermediate</span>
-                        <h3>MPC Stream</h3>
-                    </div>
-                </div>
-                <div class="grid-item" onclick="openModal('bachelors', 'St. Ann\'s College', '2018 - 2022', 'As Branch Leader, I managed 200+ students, headed the White Hat Cybersecurity Club, and organized large-scale cultural fests.')">
-                    <div class="img-container"><img src="bachelors.jpg"></div>
-                    <div class="item-info">
-                        <span class="tag">B.Tech</span>
-                        <h3>St. Ann's College</h3>
-                    </div>
-                </div>
-                <div class="grid-item" onclick="openModal('uol', 'University of Liverpool', '2023 - 2026', 'Pursuing my Masters in the UK. This chapter defines my resilience. Despite facing significant eye health challenges, I maintained my academic standing.')">
+                
+                <div class="grid-item" onclick="openModal('uol', 'MSc Advanced Computer Science', 'University of Liverpool', 'Focusing on high-level computational theory and scalable systems in the UK. This degree represents my transition into specialized research-driven engineering.', 'Advanced Algorithms, Distributed Systems, Cloud Architecture, Research Methodologies', 'Python, LaTeX, AWS, Big Data, Research Analysis')">
                     <div class="img-container"><img src="uol.jpg"></div>
                     <div class="item-info">
-                        <span class="tag">Master's</span>
-                        <h3>UoL Liverpool</h3>
+                        <span class="tag">Present</span>
+                        <h3>Advanced CS (MSc)</h3>
+                    </div>
+                </div>
+
+                <div class="grid-item" onclick="openModal('bachelors', 'B.Tech Computer Science', 'St. Ann\'s College', 'Built the core foundation of software engineering. Served as Branch Leader and Head of the White Hat Cybersecurity Club, managing over 200+ students.', 'Data Structures, Database Management, Operating Systems, Computer Networks', 'Java, C++, SQL, Cybersecurity, Leadership, Agile')">
+                    <div class="img-container"><img src="bachelors.jpg"></div>
+                    <div class="item-info">
+                        <span class="tag">Graduation</span>
+                        <h3>Computer Science (B.Tech)</h3>
+                    </div>
+                </div>
+
+                <div class="grid-item" onclick="openModal('inter', 'Intermediate (MPC)', 'Narayana College', 'The rigorous foundation of analytical thinking. Focused on Mathematics, Physics, and Chemistry to prepare for competitive engineering entrance.', 'Calculus, Analytical Geometry, Logical Reasoning', 'Problem Solving, Mathematics, Physics, Logic')">
+                    <div class="img-container"><img src="inter.jpg"></div>
+                    <div class="item-info">
+                        <span class="tag">College</span>
+                        <h3>Intermediate</h3>
+                    </div>
+                </div>
+
+                <div class="grid-item" onclick="openModal('10', 'High School', 'Vignan Bharati', 'The start of my academic journey. Excelled in science and leadership early on as an NCC Cadet and District-level athlete.', 'Fundamental Science, Disciplined Study, Public Speaking', 'Teamwork, Science, Project Planning, Discipline')">
+                    <div class="img-container"><img src="10.jpg"></div>
+                    <div class="item-info">
+                        <span class="tag">School</span>
+                        <h3>10th Standard</h3>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="reveal-item" style="margin-top: 150px;">
-            <h2 class="section-title">Experience & Impact</h2>
+            <h2 class="section-title">Professional Impact</h2>
             <div class="grid-container experience-grid">
-                <div class="grid-item featured" onclick="openModal('startup', 'Ex-Money (Founder)', '2020 - 2021', 'Launched a Fintech solution at age 18. Scaled to 125,000+ users in 8 months.')">
+                
+                <div class="grid-item featured" onclick="openModal('startup', 'Founder & CEO', 'Ex-Money App', 'Launched a Fintech solution at age 18. Scaled to 125,000+ users in 8 months. Managed technical logic, growth strategy, and customer success.', 'Product Scaling, User Retention, Logic Disbursement, Financial Compliance', 'Business Strategy, Growth Hacking, Operations, Fintech')">
                     <div class="img-container">
                         <img src="startup.jpg">
-                        <div class="badge">125K+ USERS</div>
+                        <div class="badge">125K+ DL</div>
                     </div>
                     <div class="item-info">
-                        <span class="tag highlight">Founder</span>
+                        <span class="tag highlight">Entrepreneurship</span>
                         <h3>Ex-Money App</h3>
                     </div>
                 </div>
-                <div class="grid-item" onclick="openModal('creator', 'Digital Strategy', '2021 - 2023', 'Managed digital communities for top creators like Phanumantu and Pranay Varma.')">
+
+                <div class="grid-item" onclick="openModal('creator', 'Content Strategist', 'Digital Media', 'Managed digital communities and moderation for high-profile creators like Phanumantu and Pranay Varma.', 'Community Engagement, Crisis Management, Content Strategy', 'Digital Marketing, Social Analytics, Brand Management')">
                     <div class="img-container"><img src="creator.jpg"></div>
                     <div class="item-info">
                         <span class="tag">Strategy</span>
-                        <h3>Content Lead</h3>
+                        <h3>Digital Content Lead</h3>
                     </div>
                 </div>
-                <div class="grid-item" onclick="openModal('akshaya', 'Operations Management', '2023 - 2025', 'Operations Lead at Akshaya, Liverpool.')">
+
+                <div class="grid-item" onclick="openModal('akshaya', 'Operations Lead', 'Akshaya Liverpool', 'Managing BOH (Back of House) operations in a fast-paced environment, ensuring logistics and staff efficiency.', 'Resource Planning, Logistics, Operational Efficiency', 'UK Compliance, Team Coordination, Logistics')">
                     <div class="img-container"><img src="uk_work.jpg"></div>
                     <div class="item-info">
-                        <span class="tag">Operations</span>
-                        <h3>Akshaya Liverpool</h3>
+                        <span class="tag">UK Work</span>
+                        <h3>UK Operations</h3>
                     </div>
                 </div>
+
             </div>
         </div>
     </main>
@@ -89,13 +99,29 @@
     <div id="eduModal" class="modal-overlay" onclick="closeModal()">
         <div class="modal-box" onclick="event.stopPropagation()">
             <span class="close-x" onclick="closeModal()">&times;</span>
-            <div class="modal-flex-container">
-                <div class="modal-img-box"><img id="modalImg" src=""></div>
-                <div class="modal-text-box">
+            <div class="modal-flex">
+                <div class="modal-img">
+                    <img id="modalImg" src="">
+                </div>
+                <div class="modal-details" id="modalDetails">
                     <h2 id="modalTitle"></h2>
-                    <span id="modalDate" class="modal-date-label"></span>
+                    <h4 id="modalInst"></h4>
                     <div class="modal-line"></div>
-                    <p id="modalDesc"></p>
+                    
+                    <div class="modal-section">
+                        <h5>Description</h5>
+                        <p id="modalDesc"></p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h5>Key Learnings</h5>
+                        <p id="modalLearned"></p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h5>Skills Acquired</h5>
+                        <div id="modalSkills" class="skills-container"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -103,27 +129,34 @@
 
     <script>
         window.onscroll = () => {
-            const landing = document.getElementById('landingSection');
-            const landingText = document.getElementById('landingText');
-            const reveals = document.querySelectorAll('.reveal-item');
             let scroll = window.scrollY;
+            document.getElementById('landingBg').style.opacity = 1 - (scroll / 500);
+            document.getElementById('landingSection').style.opacity = 1 - (scroll / 400);
             
-            // Fades out the landing image to reveal the dark body background
-            landing.style.opacity = 1 - (scroll / 500);
-            landingText.style.opacity = 1 - (scroll / 400);
-
-            reveals.forEach(el => {
+            document.querySelectorAll('.reveal-item').forEach(el => {
                 if(el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
             });
         };
 
-        function openModal(img, title, date, desc) {
+        function openModal(img, title, inst, desc, learned, skills) {
             document.getElementById('modalImg').src = img + ".jpg";
             document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalDate').innerText = date;
+            document.getElementById('modalInst').innerText = inst;
             document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalLearned').innerText = learned;
+            
+            const skillsBox = document.getElementById('modalSkills');
+            skillsBox.innerHTML = '';
+            skills.split(',').forEach(skill => {
+                const span = document.createElement('span');
+                span.className = 'skill-tag';
+                span.innerText = skill.trim();
+                skillsBox.appendChild(span);
+            });
+
             document.getElementById('eduModal').style.display = "flex";
             document.body.style.overflow = "hidden";
+            document.getElementById('modalDetails').scrollTop = 0; // Reset scroll to top
         }
 
         function closeModal() {
