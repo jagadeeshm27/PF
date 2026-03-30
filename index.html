@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jagadeesh M | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <section class="landing" id="landingSection">
+        <div class="landing-text" id="landingText">
+            <p class="sub-text">Chirala to Liverpool</p>
+            <h1 class="main-title">Jagadeesh M</h1>
+            <div class="status-bar">
+                <span class="status-dot"></span> Founder & Scholar
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        
+        <div class="reveal-item">
+            <h2 class="section-title">Academic Journey</h2>
+            <div class="grid-container education-grid">
+                <div class="grid-item" onclick="openModal('10', 'Vignan Bharati High School', '2016', 'Student of the Year and Best Science Project. NCC Cadet and District-level athlete.')">
+                    <div class="img-container"><img src="10.jpg"></div>
+                    <div class="item-info">
+                        <span class="tag">Schooling</span>
+                        <h3>Vignan Bharati</h3>
+                    </div>
+                </div>
+                <div class="grid-item" onclick="openModal('inter', 'Narayana Junior College', '2016 - 2018', 'Focusing on MPC, this was the ideation phase of my life where I prototyped my first business ideas.')">
+                    <div class="img-container"><img src="inter.jpg"></div>
+                    <div class="item-info">
+                        <span class="tag">Intermediate</span>
+                        <h3>MPC Stream</h3>
+                    </div>
+                </div>
+                <div class="grid-item" onclick="openModal('bachelors', 'St. Ann\'s College', '2018 - 2022', 'As Branch Leader, I managed 200+ students, headed the White Hat Cybersecurity Club, and organized large-scale cultural fests.')">
+                    <div class="img-container"><img src="bachelors.jpg"></div>
+                    <div class="item-info">
+                        <span class="tag">B.Tech</span>
+                        <h3>St. Ann's College</h3>
+                    </div>
+                </div>
+                <div class="grid-item" onclick="openModal('uol', 'University of Liverpool', '2023 - 2026', 'Pursuing my Masters in the UK. This chapter defines my resilience. Despite facing significant eye health challenges, I maintained my academic standing.')">
+                    <div class="img-container"><img src="uol.jpg"></div>
+                    <div class="item-info">
+                        <span class="tag">Master's</span>
+                        <h3>UoL Liverpool</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reveal-item" style="margin-top: 150px;">
+            <h2 class="section-title">Experience & Impact</h2>
+            <div class="grid-container experience-grid">
+                <div class="grid-item featured" onclick="openModal('startup', 'Ex-Money (Founder)', '2020 - 2021', 'Launched a Fintech solution at age 18. Scaled to 125,000+ users in 8 months.')">
+                    <div class="img-container">
+                        <img src="startup.jpg">
+                        <div class="badge">125K+ USERS</div>
+                    </div>
+                    <div class="item-info">
+                        <span class="tag highlight">Founder</span>
+                        <h3>Ex-Money App</h3>
+                    </div>
+                </div>
+                <div class="grid-item" onclick="openModal('creator', 'Digital Strategy', '2021 - 2023', 'Managed digital communities for top creators like Phanumantu and Pranay Varma.')">
+                    <div class="img-container"><img src="creator.jpg"></div>
+                    <div class="item-info">
+                        <span class="tag">Strategy</span>
+                        <h3>Content Lead</h3>
+                    </div>
+                </div>
+                <div class="grid-item" onclick="openModal('akshaya', 'Operations Management', '2023 - 2025', 'Operations Lead at Akshaya, Liverpool.')">
+                    <div class="img-container"><img src="uk_work.jpg"></div>
+                    <div class="item-info">
+                        <span class="tag">Operations</span>
+                        <h3>Akshaya Liverpool</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="eduModal" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <span class="close-x" onclick="closeModal()">&times;</span>
+            <div class="modal-flex-container">
+                <div class="modal-img-box"><img id="modalImg" src=""></div>
+                <div class="modal-text-box">
+                    <h2 id="modalTitle"></h2>
+                    <span id="modalDate" class="modal-date-label"></span>
+                    <div class="modal-line"></div>
+                    <p id="modalDesc"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onscroll = () => {
+            const landing = document.getElementById('landingSection');
+            const landingText = document.getElementById('landingText');
+            const reveals = document.querySelectorAll('.reveal-item');
+            let scroll = window.scrollY;
+            
+            // Fades out the landing image to reveal the dark body background
+            landing.style.opacity = 1 - (scroll / 500);
+            landingText.style.opacity = 1 - (scroll / 400);
+
+            reveals.forEach(el => {
+                if(el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
+            });
+        };
+
+        function openModal(img, title, date, desc) {
+            document.getElementById('modalImg').src = img + ".jpg";
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDate').innerText = date;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('eduModal').style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            document.getElementById('eduModal').style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+    </script>
+</body>
+</html>
