@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jagadeesh M | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #a7ad9b;
+            --accent-rgb: 167, 173, 155;
+            --bg-dark: #0a0c0e;
+            --card-glass: rgba(255, 255, 255, 0.04);
+            --text-dim: #ced4da;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #f1f1e6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        /* LANDING BACKGROUND - SET TO GANAPATI.JPG */
+        .landing-bg {
+            position: fixed; inset: 0;
+            background: linear-gradient(rgba(10,12,14,0.5), rgba(10,12,14,0.7)), url('ganapati.jpg') center/cover no-repeat;
+            z-index: 1;
+        }
+
+        .landing {
+            height: 100vh; position: relative; z-index: 2;
+            display: flex; align-items: center; justify-content: space-between; padding: 0 10%;
+        }
+
+        .main-title { font-size: clamp(45px, 8vw, 85px); font-weight: 700; letter-spacing: -2px; }
+        .sub-text { font-size: 16px; color: var(--accent); letter-spacing: 4px; text-transform: uppercase; font-weight: 700; }
+
+        .status-bar { display: flex; align-items: center; gap: 12px; font-weight: 600; color: var(--accent); margin-top: 20px; }
+        .status-dot { width: 10px; height: 10px; background: #4caf50; border-radius: 50%; box-shadow: 0 0 10px #4caf50; animation: blink 2s infinite; }
+        @keyframes blink { 50% { opacity: 0.2; } }
+
+        /* HOVER INTERACTION STYLES */
+        .profile-interaction {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        .message-block {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--accent);
+            padding: 20px;
+            border-radius: 15px 15px 0 15px;
+            max-width: 300px;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
+
+        .typing-container {
+            font-size: 14px;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+        }
+
+        .profile-square {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            border: 2px solid var(--accent);
+            overflow: hidden;
+            cursor: pointer;
+            transition: 0.4s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .profile-square img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* HOVER TRIGGERS */
+        .profile-interaction:hover .message-block {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .profile-interaction:hover .typing-container {
+            width: 100%;
+            animation: typing 1.5s steps(30, end) forwards;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        .content { 
+            position: relative; 
+            z-index: 3; 
+            padding: 150px 8% 100px; 
+            background: var(--bg-dark);
+            mask-image: linear-gradient(to bottom, transparent, black 200px);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 200px);
+            margin-top: -150px;
+            border-radius: 40px 40px 0 0;
+        }
+
+        .section-title { font-size: 32px; border-left: 5px solid var(--accent); padding-left: 20px; margin-bottom: 60px; }
+
+        .grid-container { display: grid; gap: 30px; }
+        .education-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .experience-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+
+        .grid-item {
+            background: var(--card-glass);
+            backdrop-filter: blur(20px);
+            border-radius: 28px; border: 1px solid rgba(255,255,255,0.08);
+            overflow: hidden; cursor: pointer; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            position: relative;
+        }
+        .grid-item:hover { transform: translateY(-12px); border-color: var(--accent); background: rgba(255,255,255,0.08); }
+
+        .img-container { height: 260px; overflow: hidden; position: relative; z-index: 1; }
+        .img-container img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.5); transition: 0.8s ease; }
+        .grid-item:hover img { filter: brightness(0.9); transform: scale(1.05); }
+
+        .item-info { padding: 35px 25px; text-align: center; position: relative; z-index: 1; }
+        .tag { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 10px; display: block; font-weight: 800; }
+        .item-info h3 { font-size: 22px; font-weight: 600; }
+
+        .roadmap-wrapper { max-width: 1100px; margin: 80px auto; padding: 0 50px; position: relative; }
+        .snake-row { display: flex; justify-content: space-between; align-items: center; position: relative; margin-bottom: 120px; width: 100%; }
+        .snake-row::after {
+            content: ''; position: absolute; width: 80px; height: 124px; border: 4px solid var(--accent); opacity: 0.2; z-index: 1;
+        }
+        .row-1::after { top: 35px; right: -40px; border-left: 0; border-radius: 0 60px 60px 0; }
+        .row-2::after { top: 35px; left: -40px; border-right: 0; border-radius: 60px 0 0 60px; }
+        .snake-row.reverse { flex-direction: row-reverse; }
+
+        .snake-item { width: 160px; text-align: center; position: relative; z-index: 2; cursor: pointer; transition: 0.3s; }
+        .year-circle {
+            width: 70px; height: 70px; background: var(--bg-dark); border: 2px solid var(--accent); border-radius: 50%;
+            margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--accent); transition: 0.4s;
+        }
+        .snake-item:hover .year-circle { background: var(--accent); color: #000; box-shadow: 0 0 30px var(--accent); }
+        .label h4 { color: var(--accent); font-size: 0.95rem; margin-bottom: 5px; }
+        .label p { font-size: 0.75rem; opacity: 0.8; color: #fff; }
+        .snake-connector { flex-grow: 1; height: 2px; background: rgba(167, 173, 155, 0.2); margin-bottom: 85px; z-index: 1; }
+
+        .timeline-overlay {
+            display: none; position: fixed; inset: 0; z-index: 9999;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(25px);
+            align-items: center; justify-content: center; padding: 20px;
+        }
+        .timeline-box {
+            background: #121417; width: 95%; max-width: 1000px; max-height: 85vh; 
+            border-radius: 40px; overflow: hidden; position: relative; border: 1px solid rgba(255,255,255,0.05);
+        }
+        .modal-details { width: 100%; padding: 60px; overflow-y: auto; position: relative;}
+        
+        .modal-thumb {
+            position: absolute; top: 40px; right: 40px;
+            width: 130px; height: 130px; border-radius: 20px;
+            object-fit: cover; border: 2px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 5;
+        }
+
+        .modal-year-bg {
+            position: absolute; top: 20px; right: 40px;
+            font-size: clamp(60px, 10vw, 100px); font-weight: 700;
+            color: var(--accent); opacity: 0.08; pointer-events: none;
+            z-index: 1; line-height: 1;
+        }
+
+        .skill-tag { background: rgba(167, 173, 155, 0.1); color: var(--accent); padding: 8px 18px; border-radius: 50px; font-size: 13px; margin: 4px; display: inline-block; border: 1px solid rgba(167, 173, 155, 0.2); }
+        
+        .close-btn { 
+            position: absolute; top: 35px; left: 35px; font-size: 40px; color: #fff; 
+            cursor: pointer; opacity: 0.4; z-index: 100; transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: inline-block;
+            line-height: 1;
+        }
+        .close-btn:hover { 
+            opacity: 1; 
+            color: var(--accent); 
+            text-shadow: 0 0 20px var(--accent); 
+            transform: rotate(180deg); 
+        }
+
+        .reveal-item { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal-item.active { opacity: 1; transform: translateY(0); }
+        
+        .bullet-list { list-style: none; margin-top: 15px; }
+        .bullet-list li { position: relative; padding-left: 25px; margin-bottom: 10px; color: var(--text-dim); }
+        .bullet-list li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); }
+
+        .modal-section-label { color: var(--accent); text-transform: uppercase; font-size: 11px; letter-spacing: 2px; font-weight: 800; margin-top: 35px; display: block; border-bottom: 1px solid rgba(167, 173, 155, 0.1); padding-bottom: 8px; margin-bottom: 15px;}
+
+        .contact-section {
+            position: relative; z-index: 4; max-width: 90%; margin: 150px auto 100px; padding: 100px 8% 80px;
+            background: #0d0f11; border: 1px solid rgba(255,255,255,0.08); border-radius: 40px; opacity: 0; transform: translateY(40px); transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .contact-section.active { opacity: 1; transform: translateY(0); }
+        .contact-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 40px; }
+        
+        .contact-card { 
+            text-align: center; text-decoration: none; color: inherit; transition: 0.4s ease; 
+            padding: 20px; border-radius: 20px; cursor: pointer; border: 1px solid transparent;
+        }
+        .contact-card:hover {
+            background: rgba(var(--accent-rgb), 0.05);
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(var(--accent-rgb), 0.2);
+            transform: translateY(-8px);
+        }
+        .contact-card span { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+        .contact-card p { font-size: 18px; margin-top: 8px; color: #fff; transition: 0.3s; }
+        .contact-card:hover p { color: var(--accent); }
+
+        @media (max-width: 900px) {
+            .landing { flex-direction: column; padding-top: 100px; padding-left: 0; }
+            .content { padding: 100px 5% 50px; margin-top: -100px; }
+            .profile-interaction { margin-top: 30px; }
+            .message-block { display: none; } /* Hide hover message on small mobile */
+            
+            .snake-row, .snake-row.reverse { 
+                flex-direction: column !important; 
+                align-items: flex-start; 
+                margin-left: 10px; 
+                margin-bottom: 0; 
+            }
+            .snake-row::after, .snake-connector { display: none; }
+            .snake-item { 
+                margin-bottom: 50px; 
+                width: 100%; 
+                text-align: left; 
+                display: flex; 
+                align-items: center; 
+                gap: 20px;
+            }
+            .year-circle { margin: 0; flex-shrink: 0; width: 60px; height: 60px; font-size: 14px; }
+            .modal-details { padding: 80px 30px 40px; }
+            .modal-thumb { display: none; }
+            .modal-year-bg { font-size: 50px; right: 20px; top: 15px; opacity: 0.15; }
+            .timeline-box { width: 98%; max-height: 95vh; border-radius: 25px; }
+            .close-btn { top: 20px; left: 20px; font-size: 35px; opacity: 0.8; }
+            .section-title { font-size: 24px; margin-bottom: 30px; }
+            .contact-grid { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="landing-bg" id="landingBg"></div>
+
+    <section class="landing" id="landingSection">
+        <div class="landing-text">
+            <p class="sub-text">Chirala to Liverpool</p>
+            <h1 class="main-title">Jagadeesh M</h1>
+            <div class="status-bar">
+                <span class="status-dot"></span> Systems Analyst & CS Lead
+            </div>
+        </div>
+
+        <div class="profile-interaction">
+    <div class="message-block" style="max-width: 400px; border-radius: 20px 20px 0 20px;">
+        <div class="typing-container" style="font-weight:700; color:var(--accent); margin-bottom: 8px;">
+            Systems Analyst & Strategic Manager
+        </div>
+        <p style="font-size: 13px; color: #ced4da; line-height: 1.5; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; white-space: normal; text-align: left;">
+            A blend of technical precision, management expertise, and entrepreneurial grit. I spent my early career leading CS student bodies and scaling a startup from zero to 125k users in eight months. Currently in Liverpool, I optimize systems, manage high-stakes operations, and strategy-map the next generation of digital platforms.
+        </p>
+    </div>
+    <div class="profile-square">
+        <img src="rishi.jpg" alt="Jagadeesh M">
+    </div>
+</div>
+    </section>
+
+    <main class="content">
+        
+        <div class="reveal-item">
+            <h2 class="section-title">Academic Evolution</h2>
+            <div class="grid-container education-grid">
+                <div class="grid-item" onclick="openTimeline('2023-26', 'The UK Graduate', 'University of Liverpool | MSc Advanced CS', 'Understanding core concepts of Computer Science in a global landscape.', 'Algorithms, Machine Learning', 'Finding efficient answers for complex algorithms, Mastered UK academic standards, Major asset for group presentations', 'uol.jpg')">
+                    <div class="img-container"><img src="uol.jpg"></div>
+                    <div class="item-info"><span class="tag">MSc Advanced CS</span><h3>Post-Graduation</h3></div>
+                </div>
+                <div class="grid-item" onclick="openTimeline('2018-22', 'The Dynamic Lead', 'St. Ann\'s College | B.Tech CS', 'Graduated with a focus on leadership and technical core principles.', 'Cloud, Data Structures', 'Elected CS Branch Head by peers, Led Cybersecurity Club initiatives, Excellence in student management', 'bachelors.jpg')">
+                    <div class="img-container"><img src="bachelors.jpg"></div>
+                    <div class="item-info"><span class="tag">B.Tech CS</span><h3>Undergraduate</h3></div>
+                </div>
+                <div class="grid-item" onclick="openTimeline('2016-18', 'The Analytical Root', 'Narayana College | Intermediate', 'Intensive analytical foundation for problem solving.', 'Calculus, Physics, Logic', 'Advanced math focus, Competitive logic training, Building academic resilience', 'inter.jpg')">
+                    <div class="img-container"><img src="inter.jpg"></div>
+                    <div class="item-info"><span class="tag">Analytical Prep</span><h3>Intermediate</h3></div>
+                </div>
+                <div class="grid-item" onclick="openTimeline('2016', 'The All-Rounder', 'Vignan Bharati | 10th Standard', 'Academic and athletic excellence at a District level.', 'Leadership, Athletics, Academics', 'Awarded Student of the Year, District-level Volleyball Player, District-level Cricket Player, Active NCC Cadet', '10.jpg')">
+                    <div class="img-container"><img src="10.jpg"></div>
+                    <div class="item-info"><span class="tag">Academic & Sports</span><h3>High School</h3></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reveal-item" style="margin-top: 150px;">
+            <h2 class="section-title">Professional Impact</h2>
+            <div class="grid-container experience-grid">
+                <div class="grid-item" onclick="openTimeline('2020', 'The High-Stakes Founder', 'Ex-Money App | Co-Founder', 'Co-founded and scaled a Fintech app to 125,000+ users.', 'Fintech, Scaling, Crisis Mgmt', 'Scaled to 125k users in 8 months, Headline in major newspapers, Navigated industry government closure', 'startup.jpg')">
+                    <div class="img-container"><img src="startup.jpg"></div>
+                    <div class="item-info"><span class="tag highlight">Fintech Startup</span><h3>Ex-Money Co-Founder</h3></div>
+                </div>
+                <div class="grid-item" onclick="openTimeline('2024', 'Content Architect', 'Freelance Moderator & Strategist', 'Working with content creators to understand the social media ecosystem.', 'Workflow Mgmt, Content Hooks', 'Moderating for Telugu YouTubers, Researching viral hooks, Translating raw ideas into viral structures', 'creator.jpg')">
+                    <div class="img-container"><img src="creator.jpg"></div>
+                    <div class="item-info"><span class="tag">Creative Strategy</span><h3>Social Content Strategist</h3></div>
+                </div>
+                <div class="grid-item" onclick="openTimeline('2026', 'Systems Specialist', 'Systems Data Analyst | Liverpool', 'Closing the loop: Scale experience meets UK retail data.', 'Data Integrity, Analytics, Systems', 'Applying MSc theory to retail operations, Scaling Data Ops efficiency, Current lead in Liverpool sales data', 'data_ops.jpg')">
+                    <div class="img-container"><img src="data_ops.jpg"></div>
+                    <div class="item-info"><span class="tag">Current Role</span><h3>Systems Analyst</h3></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reveal-item" style="margin-top: 100px;">
+            <h2 class="section-title">Professional Path</h2>
+            <div class="roadmap-wrapper">
+                <div class="snake-row row-1">
+                    <div class="snake-item" onclick="openTimeline('2016', 'The Foundation', 'Vignan Bharati', 'Academic & athletic excellence at a District level.', 'Leadership', 'District level Volleyball & Cricket, Student of the Year, NCC Cadet')">
+                        <div class="year-circle">2016</div>
+                        <div class="label"><h4>Roots</h4><p>All-Rounder</p></div>
+                    </div>
+                    <div class="snake-connector"></div>
+                    <div class="snake-item" onclick="openTimeline('2019', 'Early Hustle', 'Freelance Photography', 'Managed local photography projects with friends.', 'Project Mgmt', 'Group of 3 friends, Earned 2 Lakh individual share in 1 year, Halted by lockdown')">
+                        <div class="year-circle">2019</div>
+                        <div class="label"><h4>Freelance</h4><p>Photography</p></div>
+                    </div>
+                    <div class="snake-connector"></div>
+                    <div class="snake-item" onclick="openTimeline('2020', 'The Leap', 'Ex-Money Founder', 'Trial by fire in the Fintech world.', 'Scaling', '125k users in 8 months, Newspaper Headline, Startup Scale mastery')">
+                        <div class="year-circle">2020</div>
+                        <div class="label"><h4>Startup</h4><p>125k Users</p></div>
+                    </div>
+                </div>
+
+                <div class="snake-row row-2 reverse">
+                    <div class="snake-item" onclick="openTimeline('2021', 'Leadership', 'White Hat & Branch Head', 'Leading the technical and cultural organization.', 'Cloud Computing', 'White Hat Club Lead, Cultural Org Head, CS Branch Head')">
+                        <div class="year-circle">2021</div>
+                        <div class="label"><h4>Branch Head</h4><p>Lead Role</p></div>
+                    </div>
+                    <div class="snake-connector"></div>
+                    <div class="snake-item" onclick="openTimeline('2022', 'Validation', 'Industry Recognition', 'Offers from Infosys and Industry giants.', 'Digital Strategy', 'Infosys Offer, Keratoconus Surgery Recovery, Grasping content online')">
+                        <div class="year-circle">2022</div>
+                        <div class="label"><h4>Offers</h4><p>Infosys Pivot</p></div>
+                    </div>
+                    <div class="snake-connector"></div>
+                    <div class="snake-item" onclick="openTimeline('2023', 'Global Move', 'UK Move & Strategy', 'Relocating to Liverpool while moderating content.', 'Content Strategy', 'Moved to UK for Masters, YouTuber Moderator, Strategy Learning')">
+                        <div class="year-circle">2023</div>
+                        <div class="label"><h4>UK Arrival</h4><p>Masters & Socials</p></div>
+                    </div>
+                </div>
+
+                <div class="snake-row row-3">
+                    <div class="snake-item" onclick="openTimeline('2024', 'UK Experience', 'LFC & Aintree', 'Operations at high-profile UK sporting venues.', 'Operations', 'Liverpool FC Store Team, Aintree & Haydock Racecourses Operator')">
+                        <div class="year-circle">2024</div>
+                        <div class="label"><h4>Operations</h4><p>LFC & Aintree</p></div>
+                    </div>
+                    <div class="snake-connector"></div>
+                    <div class="snake-item" onclick="openTimeline('2025', 'Management', 'Back of House', 'Managing systems for hospitality and Indian Retail.', 'Process Design', 'BOH Management Lead, 1 year intensive investment, Workflow design')">
+                        <div class="year-circle">2025</div>
+                        <div class="label"><h4>BOH Lead</h4><p>Management</p></div>
+                    </div>
+                    <div class="snake-connector"></div>
+                    <div class="snake-item" onclick="openTimeline('2026', 'Data Systems', 'Systems Analyst', 'Bridging scale expertise and UK retail data.', 'Data Ops', 'Systems Data Analyst, Sales Data Mgmt, Content Strategist')">
+                        <div class="year-circle">2026</div>
+                        <div class="label"><h4>Current</h4><p>Systems Analyst</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="contact-section reveal-item" id="contactSection">
+            <h2 class="section-title" style="border:none; padding:0; text-align:center;">Connect</h2>
+            <div class="contact-grid">
+                <a href="mailto:jagadeeshm029@gmail.com" class="contact-card"><span>Email</span><p>jagadeeshm029@gmail.com</p></a>
+                
+                <div class="contact-card" onclick="copyValue('+44 7359961237', this)">
+                    <span>Phone</span><p>+44 7359961237</p>
+                </div>
+
+                <div class="contact-card"><span>Location</span><p>Liverpool, UK</p></div>
+                <a href="https://www.linkedin.com/in/jagadeesh-muthamsetty-9a36b929b/" target="_blank" class="contact-card"><span>LinkedIn</span><p>View Profile</p></a>
+            </div>
+        </section>
+    </main>
+
+    <div id="timelineModal" class="timeline-overlay" onclick="closeTimeline()">
+        <div class="timeline-box" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeTimeline()">&times;</span>
+            <div class="modal-details" id="tmDetailBox"></div>
+        </div>
+    </div>
+
+    <script>
+        window.onscroll = () => {
+            let scroll = window.scrollY;
+            const bg = document.getElementById('landingBg');
+            const landing = document.getElementById('landingSection');
+            if(bg) bg.style.opacity = 1 - (scroll / 600);
+            if(landing) landing.style.opacity = 1 - (scroll / 400);
+            document.querySelectorAll('.reveal-item').forEach(el => {
+                if(el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active');
+            });
+        };
+
+        function openTimeline(year, title, sub, desc, learnings, keyPoints, imgSrc = null) {
+            const box = document.getElementById('tmDetailBox');
+            let skillsHtml = learnings.split(',').map(s => `<span class="skill-tag">${s.trim()}</span>`).join('');
+            let pointsHtml = keyPoints.split(',').map(p => `<li>${p.trim()}</li>`).join('');
+            
+            let rightSideContent = imgSrc 
+                ? `<img src="${imgSrc}" class="modal-thumb">` 
+                : `<div class="modal-year-bg">${year}</div>`;
+
+            box.innerHTML = `
+                ${rightSideContent}
+                <div style="margin-top:20px;">
+                    <h2 style="font-size:32px; margin-bottom:5px; max-width:90%; line-height:1.2;">${title}</h2>
+                    <h4 style="color:var(--accent); font-weight:700;">${sub}</h4>
+                    <span class="modal-section-label">Context</span>
+                    <p style="color:var(--text-dim); font-size:17px; max-width:95%;">${desc}</p>
+                    <span class="modal-section-label">Expertise</span>
+                    <div>${skillsHtml}</div>
+                    <span class="modal-section-label">Highlights</span>
+                    <ul class="bullet-list">${pointsHtml}</ul>
+                </div>
+            `;
+            document.getElementById('timelineModal').style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeTimeline() {
+            document.getElementById('timelineModal').style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        function copyValue(text, el) {
+            navigator.clipboard.writeText(text).then(() => {
+                const p = el.querySelector('p');
+                const oldText = p.innerText;
+                p.innerText = "Copied!";
+                p.style.color = "#a7ad9b";
+                setTimeout(() => {
+                    p.innerText = oldText;
+                    p.style.color = "#fff";
+                }, 1200);
+            });
+        }
+    </script>
+    <footer style="padding: 40px 0; text-align: center; background: #0a0c0e; border-top: 1px solid rgba(255, 255, 255, 0.05); position: relative; z-index: 5;">
+    <p style="font-size: 11px; letter-spacing: 3px; color: rgba(255, 255, 255, 0.4); text-transform: uppercase; margin: 0; display: inline-block;">
+        © 2026 <span style="color: #a7ad9b; font-weight: 700;">@jagadeeshm</span> — ALL RIGHTS RESERVED
+    </p>
+</footer>
+</body>
+</html>
